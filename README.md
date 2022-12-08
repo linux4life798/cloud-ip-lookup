@@ -10,7 +10,7 @@ search for the encapsulating IP range occurs offline.
 ## Usage:
 
 ```bash
-lookup.py <lookup_ip_address>
+lookup.py <lookup_ip_address> [more_lookup_ip_addresses...]
 ```
 
 ## Example 1
