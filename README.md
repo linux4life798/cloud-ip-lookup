@@ -4,7 +4,7 @@ This tool checks if the given IP exists in any of the published IP ranges from
 [Amazon AWS][AWS IP Ranges], [Google Services][Google Services IP Ranges],
 [Google Cloud][Google Cloud IP Ranges], or [Cloudflare][Cloudflare IP Ranges].
 
-Once the IP ranges JSON is downloaded from the respective cloud provider, the
+Once the IP range files are downloaded from the respective cloud provider, the
 search for the encapsulating IP range occurs offline.
 
 ## Usage:
