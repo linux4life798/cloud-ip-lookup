@@ -2,7 +2,9 @@
 
 This tool uses the published
 [AWS IP Ranges](https://docs.aws.amazon.com/general/latest/gr/aws-ip-ranges.html)
-list to see if the given IP is contained in one of the ranges.
+list to check if the given IP is contained in one of the ranges.
+
+Once the ip ranges JSON is downloaded, the search for the range occurs offline.
 
 ## Usage:
 
