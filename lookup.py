@@ -98,6 +98,36 @@ def lookup_cloudflare(lookup_ip) -> bool:
     return found
 
 
+def lookup_azure(lookup_ip) -> bool:
+    """Check the Microsoft Azure IP range for lookup_ip.
+
+    FIXME: This method of downloading doesn't seem to work for Microsoft.
+
+    See https://www.microsoft.com/en-us/download/details.aspx?id=56519.
+    """
+
+    found = False
+    azure_ip_ranges = requests.get(
+        "https://download.microsoft.com/download/7/1/D/71D86715-5596-4529-9B13-DA13A5DE5B63/ServiceTags_Public_20221205.json").json()['values']
+
+    for service in azure_ip_ranges:
+        for prefix in service['properties']['addressPrefixes']:
+            ip_prefix = ipaddress.ip_network(prefix)
+
+            # The IP may exist in multiple ranges, so search all.
+            if lookup_ip in ip_prefix:
+                found = True
+                properties = service['properties']
+                print(f"{lookup_ip} | Microsoft Azure |",
+                    prefix,
+                    f"platform={properties['platform']}",
+                    f"systemService={properties['systemService']}",
+                    f"region={properties['region']}",
+                    f"regionID={properties['regionId']}",
+
+                    )
+    return found
+
 def main(argv: list) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
