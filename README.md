@@ -1,11 +1,17 @@
 # Cloud Services IP Lookup
 
-This tool checks if the given IP exists in any of the published IP ranges from
-[Amazon AWS][AWS IP Ranges], [Google Services][Google Services IP Ranges],
-[Google Cloud][Google Cloud IP Ranges], or [Cloudflare][Cloudflare IP Ranges].
+This tool checked whether the given IP addresses are associated with any known
+cloud/service providers. It does this by downloading the IP range files from each
+provider and checking if the IP address given falls within one or more
+of the listed ranges. Since we are searching the pre-downloaded ranges, the
+provided IP address are not communicated outside of your machine.
 
-Once the IP range files are downloaded from the respective cloud provider, the
-search for the encapsulating IP range occurs offline.
+The following providers are supported:
+
+* [Amazon AWS][AWS IP Ranges]
+* [Google Services][Google Services IP Ranges]
+* [Google Cloud][Google Cloud IP Ranges]
+* [Cloudflare][Cloudflare IP Ranges]
 
 ## Usage:
 
