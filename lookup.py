@@ -24,7 +24,7 @@ def lookup_aws(lookup_ip) -> bool:
         # The IP may exist in multiple ranges, so search all.
         if lookup_ip in ip_prefix:
             found = True
-            print('AWS:', prefix)
+            print(f"{lookup_ip} | AWS |", prefix)
     return found
 
 
@@ -48,7 +48,7 @@ def lookup_google_services(lookup_ip) -> bool:
         # The IP may exist in multiple ranges, so search all.
         if lookup_ip in ip_prefix:
             found = True
-            print("Google Service:", prefix)
+            print(f"{lookup_ip} | Google Service |", prefix)
     return found
 
 
@@ -72,7 +72,7 @@ def lookup_google_cloud(lookup_ip) -> bool:
         # The IP may exist in multiple ranges, so search all.
         if lookup_ip in ip_prefix:
             found = True
-            print("Google Cloud:", prefix)
+            print(f"{lookup_ip} | Google Cloud |", prefix)
     return found
 
 
@@ -94,30 +94,30 @@ def lookup_cloudflare(lookup_ip) -> bool:
         # The IP may exist in multiple ranges, so search all.
         if lookup_ip in ip_prefix:
             found = True
-            print("Cloudflare:", prefix)
+            print(f"{lookup_ip} | Cloudflare |", prefix)
     return found
 
 
 def main(argv: list) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
-        'lookup_ip',
-        help="The IP address to lookup",
+        'lookup_ips',
+        nargs='+',
+        help="The IP addresses to lookup",
         type=ipaddress.ip_address,
     )
     opts = parser.parse_args(argv)
-    lookup_ip = opts.lookup_ip
 
-    found = False
-
-    if lookup_aws(lookup_ip):
-        found = True
-    if lookup_google_services(lookup_ip):
-        found = True
-    if lookup_google_cloud(lookup_ip):
-        found = True
-    if lookup_cloudflare(lookup_ip):
-        found = True
+    founds = [False] * len(opts.lookup_ips)
+    for i, lookup_ip in enumerate(opts.lookup_ips):
+        if lookup_aws(lookup_ip):
+            founds[i] = True
+        if lookup_google_services(lookup_ip):
+            founds[i] = True
+        if lookup_google_cloud(lookup_ip):
+            founds[i] = True
+        if lookup_cloudflare(lookup_ip):
+            founds[i] = True
 
     return 0 if all(founds) else 1
 
