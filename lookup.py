@@ -119,7 +119,7 @@ def main(argv: list) -> int:
     if lookup_cloudflare(lookup_ip):
         found = True
 
-    return 1 if found else 0
+    return 0 if all(founds) else 1
 
 
 if __name__ == "__main__":
