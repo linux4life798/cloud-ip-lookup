@@ -1,5 +1,5 @@
 [project]
-name = "cloud_ip_lookup_linux4life798"
+name = "cloud-ip-lookup"
 version = "1.0.0"
 authors = [
   { name="Craig Hesling", email="craig@hesling.com" },
