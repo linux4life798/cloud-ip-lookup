@@ -1,0 +1,18 @@
+[project]
+name = "cloud_ip_lookup_linux4life798"
+version = "1.0.0"
+authors = [
+  { name="Craig Hesling", email="craig@hesling.com" },
+]
+description = "A utility to check whether a given IP is associated with a cloud provider"
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/linux4life798/cloud-ip-lookup"
+"Bug Tracker" = "https://github.com/linux4life798/cloud-ip-lookup/issues"
